@@ -1,0 +1,30 @@
+﻿<Window x:Class="NewApp.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:src="clr-namespace:NewApp"
+        xmlns:local="clr-namespace:NewApp"
+        mc:Ignorable="d"
+        Title="Window1" Height="353.008" Width="464.662">
+    <Window.Resources>
+        <src:EmployeeList x:Key="Emps"></src:EmployeeList>
+        <DataTemplate x:Key="empTemplate">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding EmpNo}" Background="Red"></TextBlock>
+                <TextBlock Text="{Binding EmpName}"></TextBlock>
+                <TextBlock Text="{Binding Salary}" Background="Cyan"></TextBlock>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource Emps}}">
+     
+        <!--#region  The List with Binding-->
+        <ListBox x:Name="lstname" HorizontalAlignment="Left" Height="293" Margin="30,10,0,0"  
+                 VerticalAlignment="Top" Width="337"
+                  ItemsSource="{Binding}"
+                 ItemTemplate="{StaticResource empTemplate}"/>
+        <!--#endregion-->
+    
+    </Grid>
+</Window>
